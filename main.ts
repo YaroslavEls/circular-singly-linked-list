@@ -28,7 +28,7 @@ class List {
         return i;
     }
 
-    addToEnd(value: string) {
+    append(value: string) {
         const newListNode: ListNode = {
             value: value,
             next: this.head
@@ -55,9 +55,9 @@ class List {
         }
     }
 
-    add(value: string, pos: number) {
+    insert(value: string, pos: number) {
         if (pos === this.length()) {
-            this.addToEnd(value);
+            this.append(value);
             return;
         }
 
@@ -89,7 +89,7 @@ class List {
         newListNode.next = tmpNext;
     }
 
-    deleteByPos(pos: number): string {
+    delete(pos: number): string {
         this.checkIndex(pos);
 
         let current: ListNode = this.head;
@@ -116,18 +116,18 @@ class List {
         return value;
     }
 
-    deleteByValue(value: string) {
+    deleteAll(value: string) {
         let current: ListNode = this.head;
 
         for (let i: number = 0; i < this.length(); i++) {
             if (current.value == value) {
-                this.deleteByPos(i);
+                this.delete(i);
             }
             current = current.next;
         }
     }
 
-    find(pos: number): string {
+    get(pos: number): string {
         this.checkIndex(pos);
 
         let current: ListNode = this.head;
@@ -145,7 +145,7 @@ class List {
         let current: ListNode = this.head;
 
         for (let i: number = 0; i < this.length(); i++) {
-            newList.addToEnd(current.value);
+            newList.append(current.value);
             current = current.next;
         }
 
@@ -189,11 +189,11 @@ class List {
         this.tail = null;
     }
 
-    extent(otherList: List) {
+    extend(otherList: List) {
         let current: ListNode = otherList.head;
 
         for (let i: number = 0; i < otherList.length(); i++) {
-            this.addToEnd(current.value);
+            this.append(current.value);
             current = current.next;
         }
     }
