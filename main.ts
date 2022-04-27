@@ -50,7 +50,7 @@ class List {
     }
 
     checkIndex(index: number) {
-        if (index < 0 || index > this.length()) {
+        if (index < 0 || index >= this.length()) {
             throw new Error('Incorrect index');
         }
     }
