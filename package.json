@@ -1,0 +1,26 @@
+{
+  "name": "circular-singly-linked-list",
+  "version": "1.0.0",
+  "description": "software development methodologies and technologies, lab 2",
+  "main": "main.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaroslavEls/circular-singly-linked-list.git"
+  },
+  "author": "Yaroslav Tereshchenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YaroslavEls/circular-singly-linked-list/issues"
+  },
+  "homepage": "https://github.com/YaroslavEls/circular-singly-linked-list#readme",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {}
+}
