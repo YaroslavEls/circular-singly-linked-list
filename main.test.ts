@@ -45,7 +45,7 @@ describe('Testing List class', () => {
     });
 
     describe('list.get() testing', () => {
-        test('sholud return the value of the 2-nd element (Tidebringer)', () => {
+        test('sholud return the value of the given element (2-nd)', () => {
             expect(list.get(1)).toBe('Tidebringer');
         });
 
@@ -57,7 +57,7 @@ describe('Testing List class', () => {
     });
 
     describe('list.insert() testing', () => {
-        test('new element should be inserted on the 2-nd position', () => {
+        test('new element should be inserted on the given position (2-nd)', () => {
             const newValue: string = 'Tidal Wave';
             list.insert(newValue, 1);
             expect(list.get(1)).toBe(newValue);
@@ -72,7 +72,7 @@ describe('Testing List class', () => {
     });
 
     describe('list.delete() testing', () => {
-        test('the 2-nd element shold be deleted (value: Tidebringer)', () => {
+        test('the given element should be deleted (2-nd)', () => {
             const value = 'Tidebringer';
             expect(list.get(1)).toBe(value);
             list.delete(1);
@@ -87,8 +87,8 @@ describe('Testing List class', () => {
     });
 
     describe('list.findFirst() testing', () => {
-        test('should return the 2-nd element', () => {
-            const value = 'Tidebringer';
+        test('should return the first element with the given value (2-nd)', () => {
+            const value: string = 'Tidebringer';
             list.append(value);
             expect(list.findFirst(value)).toEqual(1);
         });
@@ -98,9 +98,9 @@ describe('Testing List class', () => {
         });
     });
 
-    describe ('list.findLast() testing', () => {
-        test('should return the 5-th element', () => {
-            const value = 'Tidebringer';
+    describe('list.findLast() testing', () => {
+        test('should return the last element with given value (5-th)', () => {
+            const value: string = 'Tidebringer';
             list.append(value);
             expect(list.findLast(value)).toEqual(4);
         });
@@ -108,6 +108,53 @@ describe('Testing List class', () => {
         test('should return -1 (no matches)', () => {
             expect(list.findLast('Torrent Storm')).toEqual(-1);
         });
+    });
+
+    describe('list.deleteAll() testing', () => {
+        test('should delete all elements with given value (Tidebringer)', () => {
+            const value: string = 'Tidbringer';
+            list.append(value);
+            list.deleteAll(value);
+            expect(list.findFirst(value)).toEqual(-1);
+        });
+
+        test('should not change anything in the list', () => {
+            expect(list.length()).toEqual(4);
+            list.deleteAll('Tidal Wave');
+            expect(list.length()).toEqual(5);
+        });
+    });
+
+    describe('list.clone() testing', () => {
+        test('should return copy of the given list', () => {
+            const newList = list.clone();
+            expect(newList.head.value).toBe(list.head.value);
+            expect(newList.tail.value).toBe(list.tail.value);
+        })
+    });
+
+    describe('list.extend() testing', () => {
+        test('length of the list should be increased', () => {
+            expect(list.length()).toEqual(4);
+            const newList: List = new List;
+            newList.append('Tidal Wave');
+            newList.append('Torrent Storm');
+            list.extend(newList);
+            expect(list.length()).toEqual(6);
+        });
+
+        test('should not change the original list after the second was changed', () => {
+            const newList: List = new List;
+            newList.append('Tidal Wave');
+            newList.append('Torrent Storm');
+            list.extend(newList);
+            newList.append('Daedalus');
+            expect(list.tail.value).toBe('Torrent Storm');
+        })
+    });
+
+    describe('list.reverse() testing', () => {
+
     });
 
 });
