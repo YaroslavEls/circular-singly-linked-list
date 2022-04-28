@@ -12,6 +12,34 @@ class List {
         this.tail = null;
     }
 
+    // helper functions
+
+    checkIndex(index: number) {
+        if (index < 0 || index >= this.length()) {
+            throw new Error('Incorrect index');
+        }
+    }
+
+    enum(element: ListNode) {
+        if (element.next !== this.tail) {
+            this.enum(element.next);
+        } else {
+            this.clear();
+        }
+        this.append(element.next.value);
+        return;
+    }
+
+    print() {
+        let current: ListNode = this.head;
+        for (let i: number = 0; i < this.length(); i++) {
+            console.log(current.value);
+            current = current.next;
+        }
+    }
+
+    // main functions
+
     length(): number {
         let current: ListNode = this.head;
         let i: number = 1;
@@ -47,12 +75,6 @@ class List {
         }
 
         this.tail = newListNode;
-    }
-
-    checkIndex(index: number) {
-        if (index < 0 || index >= this.length()) {
-            throw new Error('Incorrect index');
-        }
     }
 
     insert(value: string, pos: number) {
@@ -106,11 +128,6 @@ class List {
             current = current.next;
         }
 
-        // if (pos == this.length()-1) {
-        //     current.next = null;
-        //     return;
-        // }
-
         const value: string = current.next.value;
         current.next = current.next.next;
         return value;
@@ -153,8 +170,9 @@ class List {
     }
 
     reverse() {
-        const current: ListNode = this.head;
-        
+        const head = this.head.value;
+        this.enum(this.head);
+        this.append(head);
     }
 
     findFirst(value: string): number {
@@ -197,7 +215,15 @@ class List {
             current = current.next;
         }
     }
-
 }
+
+// const list: List = new List();
+// list.clear();
+// list.append('Torrent');
+// list.append('Tidebringer');
+// list.append('X Marks the Spot');
+// list.append('Ghostship');
+// list.reverse();
+// list.print();
 
 export default List;

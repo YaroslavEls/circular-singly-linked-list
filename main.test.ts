@@ -154,7 +154,19 @@ describe('Testing List class', () => {
     });
 
     describe('list.reverse() testing', () => {
+        test('order of the elements in the list should be reversed', () => {
+            const origHead: string = list.head.value;
+            const origTail: string = list.tail.value;
+            list.reverse();
+            expect(list.head.value).toBe(origTail);
+            expect(list.tail.value).toBe(origHead);
+        });
 
+        test('length of the list should not be changed', () => {
+            expect(list.length()).toEqual(4);
+            list.reverse();
+            expect(list.length()).toEqual(4);
+        });
     });
 
 });
