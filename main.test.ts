@@ -121,7 +121,7 @@ describe('Testing List class', () => {
         test('should not change anything in the list', () => {
             expect(list.length()).toEqual(4);
             list.deleteAll('Tidal Wave');
-            expect(list.length()).toEqual(5);
+            expect(list.length()).toEqual(4);
         });
     });
 
