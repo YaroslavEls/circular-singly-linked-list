@@ -217,13 +217,4 @@ class List {
     }
 }
 
-// const list: List = new List();
-// list.clear();
-// list.append('Torrent');
-// list.append('Tidebringer');
-// list.append('X Marks the Spot');
-// list.append('Ghostship');
-// list.reverse();
-// list.print();
-
 export default List;

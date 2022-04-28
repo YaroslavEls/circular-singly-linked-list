@@ -73,7 +73,7 @@ describe('Testing List class', () => {
 
     describe('list.delete() testing', () => {
         test('the given element should be deleted (2-nd)', () => {
-            const value = 'Tidebringer';
+            const value: string = 'Tidebringer';
             expect(list.get(1)).toBe(value);
             list.delete(1);
             expect(list.get(1)).not.toBe(value);
@@ -127,7 +127,7 @@ describe('Testing List class', () => {
 
     describe('list.clone() testing', () => {
         test('should return copy of the given list', () => {
-            const newList = list.clone();
+            const newList: List = list.clone();
             expect(newList.head.value).toBe(list.head.value);
             expect(newList.tail.value).toBe(list.tail.value);
         })
@@ -168,5 +168,4 @@ describe('Testing List class', () => {
             expect(list.length()).toEqual(4);
         });
     });
-
 });
